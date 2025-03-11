@@ -1,0 +1,42 @@
+---
+export interface Props {
+  title: string
+  description: string
+}
+
+const props = Astro.props
+
+const title = props.title
+const description = props.description
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="view-transition" content="same-origin" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/assets/logo.webp" />
+    <meta property="og:url" content="https://www.tramita.info" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link href="https://fonts.cdnfonts.com/css/league-spartan" rel="stylesheet" />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <style lang="scss" is:global>
+      @use '@/sass/global.scss';
+    </style>
+    <slot />
+  </body>
+</html>
+
+<script></script>

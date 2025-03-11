@@ -1,0 +1,55 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { PAGE_URLS } from '@/modules/shared/constants/pageUrls'
+import Svg from '@/modules/shared/components/Svg.svelte'
+---
+
+<style lang="scss">
+  h1 {
+    text-align: center;
+    font-size: 50px;
+    padding: 70px 0;
+    font-weight: bold;
+  }
+
+  .special {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  body {
+    background-color: var(--colorNeutral);
+  }
+
+  .g-wrapper {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius);
+    padding: 0;
+    background-color: var(--colorSecondary);
+
+    a {
+      padding: 10px;
+      padding-left: 30px;
+      font-size: 20px;
+
+      &:hover {
+        color: var(--colorPrimary);
+        background-color: var(--colorNeutral);
+      }
+    }
+  }
+</style>
+
+<Layout title="Tramita | Área de desarrollo">
+  <h1>ÁREA DE DESARROLLO</h1>
+
+  <div class="g-wrapper">
+    <a href="/private/anuncios" class="special"><Svg name="blog" /> Generador de anuncios automático</a>
+    <a href="/private/svgs" class="special"><Svg name="starTick" />Lista de iconos</a>
+
+    {PAGE_URLS.map((href: string) => <a {href}>{href}</a>)}
+  </div>
+</Layout>

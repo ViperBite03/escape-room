@@ -1,0 +1,19 @@
+@use 'src/sass/mixins.scss' as *;
+
+:root {
+  --colorPrimary: #424262;
+  --colorSecondary: #ecefff;
+  --colorAccent: #1abc9c;
+  --colorNeutral: #f7f7f7;
+
+  --colorText: #19312c;
+  --colorText2: #627472;
+  --colorText3: #fff;
+
+  --colorBorder: #d3d3d3;
+
+  --radius: 15px;
+  --menuHeight: 60px; // update globalVariables.ts MENU_HEIGHT
+  --fontPrimary: 'League Spartan';
+  --fontSecondary: 'League Spartan';
+}
