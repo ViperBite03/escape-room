@@ -189,7 +189,7 @@
     </div>
   </div>
 
-  <Modal {closed}>
+  <!--<Modal {closed}>
     <div class="modal-content">
       {#if !showTest}
         <Checkbox bind:value={checked} />
@@ -200,9 +200,10 @@
 
           {#each test[0].answers as answer}
             <span>{answer}</span>
+            <Checkbox />
           {/each}
         </div>
       {/if}
     </div>
-  </Modal>
+  </Modal>-->
 </div>
