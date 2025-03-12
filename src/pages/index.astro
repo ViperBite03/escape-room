@@ -2,21 +2,15 @@
 export const prerender = true
 
 import Layout from '@/layouts/Layout.astro'
-import Decoder from 'src/modules/shared/components/Decoder.svelte'
-import CursorTracker from 'src/modules/shared/components/CursorTracker.svelte'
-import Phone from 'src/modules/shared/components/Phone.svelte'
-
-const description =
-  '🏠 En Santa Coloma existe una inmobiliaria que, con más de 30 años de experiencia, lidera la innovación y el cambio en un sector que pide a gritos una transformación. Entra y déjate sorprender.'
+import Redirect from 'src/modules/shared/components/Redirect.svelte'
 ---
 
 <style lang="scss" is:global>
   @use 'src/sass/mixins.scss' as *;
 </style>
 
-<Layout title="TRAMITA | Inmobiliaria en Santa Coloma de Gramanet" {description}>
-  <Decoder client:load />
-  <Phone client:load />
+<Layout title="Solis.">
+  <Redirect client:load />
 </Layout>
 
 <script>
@@ -26,4 +20,6 @@ const description =
     setTimeout(() => animReveal(), 100)
     document.documentElement.scrollTop = 0 // Para navegadores estándar
   }
+
+  console.log('🧠 Made by Laia 🧠')
 </script>

@@ -1,14 +1,24 @@
 <script lang="ts">
   //https://yoksel.github.io/url-encoder/ <-- Convert SVG to DataURL
+  import { createEventDispatcher } from 'svelte'
+
   export let value: boolean = false
   export let toggle: boolean = false
   export let error: boolean = false
   export let disabled: boolean = false
   export let label: string = ''
 
+  const dispatch = createEventDispatcher()
+
   const handleToggle = () => {
     if (disabled) return
     value = !value
+  }
+
+  const handleInput = () => {
+    dispatch('inputChange', {
+      value,
+    })
   }
 </script>
 
@@ -123,7 +133,15 @@
   </button>
 {:else}
   <div class="checkbox-container">
-    <input type="checkbox" class="checkbox-custom" class:error bind:checked={value} aria-label="checkbox" {disabled} />
+    <input
+      type="checkbox"
+      class="checkbox-custom"
+      class:error
+      bind:checked={value}
+      aria-label="checkbox"
+      {disabled}
+      on:input={() => handleInput()}
+    />
 
     {#if label}
       <label class:error for="">{@html label}</label>

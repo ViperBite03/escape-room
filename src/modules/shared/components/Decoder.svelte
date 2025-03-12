@@ -1,70 +1,10 @@
 <script lang="ts">
-  import Modal from './Modal.svelte'
   import Svg from './Svg.svelte'
-  import Checkbox from './Checkbox.svelte'
+  import Test from './Test.svelte'
 
-  interface ITest {
-    question: string
-    answers: string[]
-    correct: number
-  }
-
-  const test: ITest[] = [
-    {
-      question: '¿Cuál de los siguientes es un principio fundamental de la economía circular?',
-      answers: [
-        'Usar los recursos de forma lineal hasta agotarlos.',
-        'Maximizar la vida útil de los productos y materiales.',
-        'Minimizar el uso de productos reciclados.',
-      ],
-      correct: 2,
-    },
-    {
-      question: '¿Qué es la "responsabilidad extendida del productor" en el contexto de la economía circular?',
-      answers: [
-        'La obligación de los consumidores de reciclar productos.',
-        'La obligación de los fabricantes de asumir la gestión de los residuos generados por sus productos al final de su vida útil.',
-        'La obligación de los gobiernos de regular la producción de residuos.',
-      ],
-      correct: 2,
-    },
-    {
-      question: '¿Qué beneficios trae la economía circular para las empresas?',
-      answers: [
-        'Incremento de los costes debido al reciclaje.',
-        'Reducción de la dependencia de recursos naturales y mejora de la sostenibilidad.',
-        'Aumento de la producción de desechos industriales.',
-      ],
-      correct: 2,
-    },
-    {
-      question: '¿Cuál de las siguientes acciones no está alineada con la economía circular?',
-      answers: ['Reciclar materiales.', 'Comprar productos de un solo uso.', 'Reparar productos en lugar de desecharlos.'],
-      correct: 2,
-    },
-    {
-      question: '¿Qué es la "economía compartida" dentro de la economía circular?',
-      answers: [
-        'El alquiler de productos en lugar de comprarlos, compartiendo recursos entre varias personas.',
-        'La venta de productos reciclados a otras empresas.',
-        'El aumento de la producción de productos de bajo costo.',
-      ],
-      correct: 1,
-    },
-    {
-      question: '¿Cuál es la relación entre economía circular y residuos?',
-      answers: [
-        'La economía circular busca minimizar los residuos a través de la reutilización y reciclaje.',
-        'La economía circular fomenta la acumulación de residuos para generar energía.',
-        'La economía circular depende completamente de la generación de nuevos residuos.',
-      ],
-      correct: 1,
-    },
-  ]
+  export let page: number
 
   let closed: boolean = false
-  let checked: boolean = false
-  let showTest: boolean = false
 
   let value: string = ''
   let text: string = ''
@@ -86,15 +26,13 @@
       text = ''
     }
   }
-
-  $: setTimeout(() => {
-    showTest = checked
-  }, 500)
 </script>
 
 <style lang="scss">
   .decoder-screen {
     padding: 100px;
+    height: 100vh;
+    position: relative;
 
     h1 {
       color: var(--colorPrimary);
@@ -124,6 +62,7 @@
           display: flex;
           flex-direction: column;
           gap: 10px;
+          font-size: 25px;
 
           &.right {
             align-items: flex-end;
@@ -156,18 +95,6 @@
         }
       }
     }
-
-    .modal-content {
-      padding: 10px 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      .test {
-        display: flex;
-        flex-direction: column;
-      }
-    }
   }
 </style>
 
@@ -189,21 +116,7 @@
     </div>
   </div>
 
-  <!--<Modal {closed}>
-    <div class="modal-content">
-      {#if !showTest}
-        <Checkbox bind:value={checked} />
-        <span>No soy un robot</span>
-      {:else}
-        <div class="test">
-          <span>{test[0].question}</span>
-
-          {#each test[0].answers as answer}
-            <span>{answer}</span>
-            <Checkbox />
-          {/each}
-        </div>
-      {/if}
-    </div>
-  </Modal>-->
+  {#if closed}
+    <Test bind:page />
+  {/if}
 </div>

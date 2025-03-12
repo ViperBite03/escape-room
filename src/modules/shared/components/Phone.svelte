@@ -1,18 +1,62 @@
 <script lang="ts">
   import Svg from './Svg.svelte'
-  let isUp: boolean = false
+  let isDown: boolean = false
+  let phoneNum: string = ''
+
+  export let page: number
+
+  const enterNum = (index: number) => {
+    phoneNum += index + 1
+  }
+
+  const deleteNum = () => {
+    phoneNum = phoneNum.slice(0, -1)
+  }
+
+  const join = () => {
+    const audio = new Audio('/assets/call.mp3')
+    audio.volume = 0.5
+    audio.play()
+  }
+
+  //672583491
+
+  const verifyNum = () => {
+    if (phoneNum === '222') {
+      page = 2
+      join()
+    } else {
+      phoneNum = ''
+    }
+  }
 </script>
 
 <style lang="scss">
   .phone-container {
+    transition: 0.5s ease;
     width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 
+    position: absolute;
+    right: 100px;
+    bottom: -500px;
+
     &.active {
-      margin-top: 200px;
+      transition: 0.5s ease;
+      bottom: 50px;
+    }
+
+    .up {
+      transition: 0.3s ease;
+      transform: rotate(-90deg);
+
+      &.active {
+        transition: 0.3s ease;
+        transform: rotate(90deg);
+      }
     }
 
     .phone {
@@ -27,20 +71,25 @@
       .content {
         position: absolute;
         background-color: white;
-        height: 525px;
-        border-radius: 16px;
-        width: 235px;
+        height: 505px;
+        border-radius: 25px;
+        width: 230px;
 
         top: 0;
         bottom: 15px;
         left: 0;
         right: 0;
         margin: auto;
-        z-index: -1;
 
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
+        gap: 50px;
+
+        .text {
+          font-size: 30px;
+        }
 
         .numbers {
           display: grid;
@@ -50,6 +99,8 @@
           column-gap: 20px;
 
           .num {
+            transition: 0.3s ease;
+
             background-color: lightgray;
             width: 50px;
             aspect-ratio: 1;
@@ -61,6 +112,21 @@
             align-items: center;
             justify-content: center;
             padding-top: 14px;
+
+            &:active {
+              transform: scale(0.8);
+            }
+          }
+
+          .call {
+            background-color: rgb(99, 216, 99);
+            grid-area: 5 / 2 / 6 / 3;
+            margin-top: 15px;
+            padding-top: 10px;
+          }
+
+          .delete {
+            grid-area: 5 / 3 / 6 / 4;
           }
         }
       }
@@ -68,8 +134,8 @@
   }
 </style>
 
-<div class="phone-container" class:active={isUp}>
-  <button class="up" on:click={() => (isUp = !isUp)}>
+<div class="phone-container" class:active={isDown}>
+  <button class="up" onclick={() => (isDown = !isDown)} class:active={isDown}>
     <Svg name="arrowSlim" height="50" width="50" />
   </button>
 
@@ -77,13 +143,17 @@
     <img src="/assets/phone.png" alt="" />
 
     <div class="content">
+      <span class="text">+34 {phoneNum}</span>
       <div class="numbers">
         {#each Array(9) as _, i}
-          <div class="num">{i + 1}</div>
+          <button class="num" onclick={() => enterNum(i)}>{i + 1}</button>
         {/each}
-        <div class="num">*</div>
-        <div class="num">0</div>
-        <div class="num">#</div>
+        <button class="num">*</button>
+        <button class="num" onclick={() => enterNum(-1)}>0</button>
+        <button class="num">#</button>
+
+        <button class="num call" onclick={verifyNum}><Svg name="phone" fill="white" /></button>
+        <button class="delete" onclick={deleteNum}><Svg name="delete" fill="var(--colorPrimary)" /></button>
       </div>
     </div>
   </div>

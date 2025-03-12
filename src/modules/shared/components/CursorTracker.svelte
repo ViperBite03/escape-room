@@ -5,18 +5,20 @@
   let cursorTrackerBG: HTMLElement
   let cursorTrackerContainer: HTMLElement
 
-  const backgroundImageURL = '/assets/3.png'
-  const backgroundImageURLCursor = '/assets/2.png'
+  const backgroundImageURL = '/assets/2.png'
+  const backgroundImageURLCursor = '/assets/1b.png'
 
   let offsetTop = 0
+  let offsetLeft = 0
 
   const calculateOffsetTop = () => {
     offsetTop = cursorTrackerContainer.getBoundingClientRect().top + window.scrollY
+    offsetLeft = cursorTrackerContainer.getBoundingClientRect().left + window.scrollX - 285
   }
 
   const onMouseMove = (ev: MouseEvent) => {
-    const cursorSize = 200 // Tamaño de la lupa
-    const posX = ev.pageX
+    const cursorSize = 100 // Tamaño de la lupa
+    const posX = ev.pageX - offsetLeft
     const posY = ev.pageY - offsetTop
 
     cursorTracker.style.transform = `translate(${posX}px, ${posY}px)`
@@ -33,36 +35,37 @@
     position: relative;
     width: fit-content;
     height: fit-content;
-    border-radius: 20px;
     overflow: hidden;
 
     .cursor-tracker {
       position: absolute;
       border-radius: 50%;
-      width: 200px;
-      height: 200px;
+      width: 100px;
+      height: 100px;
       overflow: hidden;
       box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.8);
       pointer-events: none;
-      top: -100px;
-      left: -100px;
+      top: -50px;
+      left: -50px;
 
       img {
         position: absolute;
-        width: auto; // Asegúrate de que la imagen sea lo suficientemente grande
-        height: auto;
         filter: brightness(150%);
       }
+    }
+
+    .image {
+      height: 735px;
     }
   }
 </style>
 
 <div class="cursor-tracker-container" bind:this={cursorTrackerContainer}>
   <div class="cursor-tracker" bind:this={cursorTracker}>
-    <img bind:this={cursorTrackerBG} src={backgroundImageURL} alt="bg" />
+    <img class="image" bind:this={cursorTrackerBG} src={backgroundImageURL} alt="bg" />
   </div>
 
-  <img src={backgroundImageURLCursor} alt="bg2" />
+  <img class="image" src={backgroundImageURLCursor} alt="bg2" />
 </div>
 
 <svelte:window on:mousemove={onMouseMove} on:scroll={calculateOffsetTop} on:resize={calculateOffsetTop} />
