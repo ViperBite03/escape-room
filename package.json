@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node scripts/readUrls && astro sync && astro dev --remote",
     "generateProperties": "node scripts/generateProperties",
-    "build": "node scripts/hidePrivate && node scripts/generateProperties && astro build --remote && node scripts/addPrivate",
+    "build": "node astro build",
     "update": "ncu -u",
     "sync": "node scripts/sync"
   },
