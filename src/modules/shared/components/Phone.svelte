@@ -22,7 +22,7 @@
   //672583491
 
   const verifyNum = () => {
-    if (phoneNum === '222') {
+    if (phoneNum === '672583491') {
       page = 2
       join()
     } else {

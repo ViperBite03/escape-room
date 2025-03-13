@@ -17,7 +17,7 @@
     height: 100vh;
     width: 100%;
     position: relative;
-    overflow-x: hidden;
+    overflow-y: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
