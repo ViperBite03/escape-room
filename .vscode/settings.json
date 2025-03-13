@@ -1,7 +1,7 @@
 {
   "workbench.colorCustomizations": {
-    "statusBar.background": "#2c4d48",
-    "statusBar.foreground": "#00daa3"
+    "statusBar.background": "#00ccff3a",
+    "statusBar.foreground": "#00bebe"
   },
   "editor.formatOnSave": true,
   "[svelte]": {
@@ -9,5 +9,6 @@
   },
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
-  }
+  },
+  "postman.settings.dotenv-detection-notification-visibility": false
 }

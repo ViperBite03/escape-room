@@ -1,49 +1,31 @@
 {
-  "name": "tramita-landings",
+  "name": "bedrock",
   "type": "module",
   "version": "1.0.0",
-  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
-    "generateProperties": "node scripts/generateProperties",
-    "build": "astro build",
-    "update": "ncu -u",
-    "sync": "node scripts/sync"
+    "build": "astro build ",
+    "preview": "astro preview",
+    "update": "ncu -u && npm install"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/db": "^0.14.6",
-    "@astrojs/mdx": "^4.0.8",
-    "@astrojs/node": "9.0.2",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/svelte": "7.0.4",
-    "@astrojs/vercel": "^8.0.6",
-    "@lucia-auth/adapter-drizzle": "^1.1.0",
+    "@astrojs/svelte": "^6.0.1",
+    "@astrojs/vercel": "^7.8.2",
     "@vercel/analytics": "^1.4.1",
-    "argon2": "^0.41.1",
-    "astro": "5.2.5",
-    "astro-robots": "^2.3.1",
-    "fs-extra": "^11.3.0",
-    "googleapis": "^144.0.0",
+    "astro": "^4.16.13",
+    "astro-robots": "^2.1.1",
+    "chart.js": "^4.4.6",
     "leaflet": "^1.9.4",
-    "lenis": "^1.1.20",
-    "lucia": "^3.2.2",
+    "lenis": "^1.1.18",
     "nodemailer": "^6.10.0",
-    "qr-code-styling": "^1.9.1",
-    "svelte": "5.19.8"
+    "openai": "^4.72.0",
+    "svelte": "^5.2.3"
   },
   "devDependencies": {
-    "axios": "^1.7.9",
-    "sharp": "^0.33.5",
-    "xml2js": "^0.6.2",
-    "prettier": "^3.4.2",
-    "prettier-plugin-astro": "latest",
-    "prettier-plugin-svelte": "latest",
-    "sass": "1.84.0",
-    "typescript": "^5.7.3"
-  },
-  "description": "Web deploy:",
-  "main": "svelte.config.js",
-  "keywords": [],
-  "author": ""
+    "prettier-plugin-svelte": "^3.2.8",
+    "sass": "1.81.0",
+    "typescript": "^5.6.3"
+  }
 }

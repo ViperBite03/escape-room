@@ -12,6 +12,6 @@ for (let page of pages) {
   }
 }
 
-await writeFile('src/modules/shared/constants/pageUrls.ts', `export const PAGE_URLS: string[] = ${JSON.stringify(pageList)}`)
+await writeFile('src/constants/pageUrls.ts', `export const PAGE_URLS: string[] = ${JSON.stringify(pageList)}`)
 
-console.log(`📜 ${pageList.length} URLS added to @/modules/shared/constants/pageUrls.ts`)
+console.log(`📜 ${pageList.length} URLS added to @/constants/pageUrls.ts`)

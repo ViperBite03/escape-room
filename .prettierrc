@@ -4,6 +4,5 @@
   "semi": false,
   "singleQuote": true,
   "printWidth": 140,
-  "svelteSortOrder": "scripts-styles-markup",
-  "plugins": ["prettier-plugin-astro"]
+  "svelteSortOrder": "scripts-styles-markup"
 }

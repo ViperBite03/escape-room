@@ -1,6 +1,6 @@
 {
   "extends": "astro/tsconfigs/base",
-  "include": ["src/**/*", "env.d.ts", "svelte-jsx.d.ts", "scripts"],
+  "include": ["src/**/*", "env.d.ts"],
   "compilerOptions": {
     "strict": false,
     "baseUrl": ".",
