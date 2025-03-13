@@ -11,7 +11,7 @@ const __dirname = dirname(__filename)
 export default defineConfig({
   site: 'https://grupdesuport.vercel.app/',
   integrations: [svelte(), sitemap(), robots()],
-  output: 'hybrid', // hybrid
+  output: 'static', // hybrid
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'ca'],
