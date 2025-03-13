@@ -1,25 +1,11 @@
 ---
-export const prerender = true
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
 
-import Layout from '@/layouts/Layout.astro'
-import Redirect from 'src/modules/shared/components/Redirect.svelte'
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<style lang="scss" is:global>
-  @use 'src/sass/mixins.scss' as *;
-</style>
-
-<Layout title="Solis.">
-  <Redirect client:load />
+<Layout>
+	<Welcome />
 </Layout>
-
-<script>
-  import { animReveal } from '@/modules/shared/scripts/reveal'
-
-  window.onload = () => {
-    setTimeout(() => animReveal(), 100)
-    document.documentElement.scrollTop = 0 // Para navegadores estándar
-  }
-
-  console.log('🧠 Made by Laia 🧠')
-</script>
