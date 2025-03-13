@@ -19,7 +19,7 @@
   }
 
   const login = () => {
-    if (text == 'Enseñar a cuidar el medio ambiente es enseñar a cuidar la vida.') {
+    if (text == 'hola') {
       closed = true
     } else {
       value = ''
