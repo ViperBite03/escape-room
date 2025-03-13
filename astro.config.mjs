@@ -4,18 +4,22 @@ import robots from 'astro-robots'
 import sitemap from '@astrojs/sitemap'
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
+import vercel from '@astrojs/vercel'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://grupdesuport.vercel.app/',
   integrations: [svelte(), sitemap(), robots()],
-  output: 'hybrid', // hybrid
+
+  // hybrid
+  output: 'server',
+
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'ca'],
   },
+
   server: {
     port: 4000,
   },
@@ -27,4 +31,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: vercel(),
 })
