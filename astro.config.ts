@@ -13,9 +13,24 @@ const __dirname = dirname(__filename)
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte()],
+  integrations: [
+    svelte(),
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes('area-personal'),
+    }),
+    robots({
+      policy: [
+        {
+          userAgent: '*',
+          disallow: ['/'],
+        },
+      ],
+    }),
+    db(),
+  ],
 
-  site: 'https://www.example.info',
+  site: 'https://www.tramita.info',
 
   server: {
     port: 4000,

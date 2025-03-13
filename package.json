@@ -1,12 +1,12 @@
 {
-  "name": "escape-room",
+  "name": "tramita-landings",
   "type": "module",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "node scripts/readUrls && astro sync && astro dev --remote",
+    "dev": "astro dev",
     "generateProperties": "node scripts/generateProperties",
-    "build": "node astro build",
+    "build": "astro build",
     "update": "ncu -u",
     "sync": "node scripts/sync"
   },
