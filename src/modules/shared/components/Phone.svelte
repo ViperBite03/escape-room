@@ -19,8 +19,6 @@
     audio.play()
   }
 
-  //672583491
-
   const verifyNum = () => {
     if (phoneNum === '222') {
       page = 2
